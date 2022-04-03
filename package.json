@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "lint": "eslint --ext js -c .eslintrc .",
-    "test": "tape test/**/*.spec.js"
+    "test": "tape test/**/*.spec.js",
+    "semantic-release": "semantic-release"
   },
   "author": "Robert Jefe Lindstaedt <robert.lindstaedt@gmail.com>",
   "license": "Apache 2.0",
