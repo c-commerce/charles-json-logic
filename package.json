@@ -1,0 +1,106 @@
+{
+  "name": "@heycharles/json-logic",
+  "version": "0.1.0",
+  "description": "Data driven logic",
+  "main": "index.js",
+  "private": false,
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "logic.js",
+    "index.js",
+    "helpers.js",
+    "operations.js",
+    "package.json"
+  ],
+  "scripts": {
+    "lint": "eslint --ext js -c .eslintrc .",
+    "test": "tape test/**/*.spec.js"
+  },
+  "author": "Robert Jefe Lindstaedt <robert.lindstaedt@gmail.com>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "clone-deep": "^4.0.1",
+    "currency-formatter": "^1.5.5",
+    "just-safe-get": "^4.0.1",
+    "just-typeof": "^3.0.1",
+    "safe-regex": "^2.1.1"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/eslint-plugin": "^7.14.5",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^8.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-no-only-tests": "^2.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-require-path-exists": "^1.1.9",
+    "semantic-release": "^18.0.0",
+    "sinon": "^13.0.1",
+    "tape": "^5.0.1"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ],
+          "message": "chore(release): Release ${nextRelease.version} - <%=new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })%>\n\n${nextRelease.notes}"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "CHANGELOG.md",
+              "label": "Changelog"
+            },
+            {
+              "path": "package.json",
+              "label": "Package"
+            }
+          ]
+        }
+      ]
+    ],
+    "fail": false,
+    "success": false,
+    "branches": [
+      "main",
+      {
+        "name": "develop",
+        "prerelease": true
+      }
+    ]
+  }
+}
